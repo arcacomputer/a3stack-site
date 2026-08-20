@@ -215,7 +215,7 @@ export default function GettingStarted() {
           >
             <div>
               <div style={{ fontWeight: 600, color: "#e2e8f0", fontSize: 14, marginBottom: 3 }}>{card.label}</div>
-              <div style={{ color: "#8291a5", fontSize: 12 }}>{card.desc}</div>
+              <div style={{ color: "#64748b", fontSize: 12 }}>{card.desc}</div>
             </div>
             <ArrowRight size={14} style={{ color: "#fbbf24", flexShrink: 0 }} />
           </a>

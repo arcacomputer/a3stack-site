@@ -322,14 +322,14 @@ p code, li code, td code {
   z-index: 100;
   background: transparent;
   backdrop-filter: none;
-  border-bottom: 1px solid transparent;
+  border-bottom: none;
   transition: background-color 0.2s, border-color 0.2s, backdrop-filter 0.2s;
 }
 
 .site-nav.scrolled {
-  background: rgba(6, 9, 15, 0.96);
+  background: rgba(6, 9, 15, 0.92);
   backdrop-filter: blur(12px);
-  border-bottom-color: var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .skip-link { position: fixed; top: 8px; left: 8px; z-index: 1000; transform: translateY(-160%); padding: 10px 14px; border-radius: 7px; background: #fbbf24; color: #06090f; font-weight: 700; }

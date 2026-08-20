@@ -4,9 +4,10 @@ interface CodeBlockProps {
   code: string;
   lang?: string;
   filename?: string;
+  terminalPrompt?: boolean;
 }
 
-export default function CodeBlock({ code, lang = "typescript", filename }: CodeBlockProps) {
+export default function CodeBlock({ code, lang = "typescript", filename, terminalPrompt = false }: CodeBlockProps) {
   const normalized = code.trim();
   return (
     <div className="code-block my-5 group">
@@ -29,7 +30,16 @@ export default function CodeBlock({ code, lang = "typescript", filename }: CodeB
           <span className="sr-only" data-copy-status aria-live="polite" />
         </div>
       </div>
-      <pre tabIndex={0} aria-label="Scrollable code example"><code>{normalized}</code></pre>
+      {terminalPrompt ? (
+        <pre className="!py-4" tabIndex={0} aria-label="Scrollable code example"><code>{normalized.split("\n").map((line, index) => (
+          <div className="flex gap-3" key={index}>
+            <span style={{ color: "#fbbf24", userSelect: "none" }}>$</span>
+            <span>{line}</span>
+          </div>
+        ))}</code></pre>
+      ) : (
+        <pre tabIndex={0} aria-label="Scrollable code example"><code>{normalized}</code></pre>
+      )}
     </div>
   );
 }
@@ -39,5 +49,5 @@ export function InlineCode({ children }: { children: React.ReactNode }) {
 }
 
 export function TerminalBlock({ code }: { code: string }) {
-  return <CodeBlock code={code} lang="bash" filename="terminal" />;
+  return <CodeBlock code={code} lang="bash" filename="terminal" terminalPrompt />;
 }

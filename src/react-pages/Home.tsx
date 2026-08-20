@@ -211,7 +211,7 @@ export default function Home() {
           {/* Subtitle */}
           <p style={{
             textAlign: "center",
-            color: "#8291a5",
+            color: "#64748b",
             fontSize: 17,
             lineHeight: 1.7,
             maxWidth: 560,
@@ -272,7 +272,7 @@ export default function Home() {
                 padding: "12px 24px",
                 background: "transparent",
                 border: "1px solid var(--border)",
-                color: "#8291a5",
+                color: "#64748b",
                 borderRadius: 10,
                 fontSize: 14,
                 fontWeight: 500,
@@ -320,7 +320,7 @@ export default function Home() {
                 Three critical layers are being built by different teams with no coordination.
                 None of them talk to each other.
               </p>
-              <p style={{ color: "#8291a5", fontSize: 15, lineHeight: 1.8 }}>
+              <p style={{ color: "#64748b", fontSize: 15, lineHeight: 1.8 }}>
                 Without A3Stack, you're duct-taping together identity, payment, and MCP solutions separately.
                 With A3Stack: <code style={{ color: "#fbbf24", fontSize: 13 }}>new A3Stack({"{ privateKey, chainId }"})</code> and you're live.
               </p>
@@ -445,7 +445,7 @@ export default function Home() {
                       alignItems: "center",
                       gap: 8,
                       fontSize: 13,
-                      color: "#8291a5",
+                      color: "#64748b",
                       marginBottom: 8,
                     }}>
                       <CheckCircle2 size={12} style={{ color: pillar.color, flexShrink: 0 }} />
@@ -559,11 +559,11 @@ export default function Home() {
                 }}>
                   {pkg.name}
                 </div>
-                <p style={{ color: "#8291a5", fontSize: 13, margin: "0 0 14px" }}>{pkg.desc}</p>
+                <p style={{ color: "#64748b", fontSize: 13, margin: "0 0 14px" }}>{pkg.desc}</p>
                 <div style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: 12,
-                  color: "#8291a5",
+                  color: "#64748b",
                   background: "var(--bg-code)",
                   padding: "6px 12px",
                   borderRadius: 6,

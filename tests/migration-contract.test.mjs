@@ -96,7 +96,19 @@ test('preserves the observed live visual behavior without redesigning the site',
   assert.doesNotMatch(css, /fonts\.googleapis\.com/, 'live production does not load the declared Google fonts');
   assert.match(css, /--text-muted:\s*#4b5f73/);
   assert.match(css, /\.copy-code[^}]*opacity:\s*0/s);
+  assert.match(css, /\.site-nav\.scrolled\s*\{[^}]*rgba\(6,\s*9,\s*15,\s*0\.92\)/s);
+  assert.match(css, /\.site-nav\s*\{[^}]*border-bottom:\s*none/s);
   assert.doesNotMatch(nav, /mobile-nav/, 'the migration must not invent a new mobile navigation design');
   assert.doesNotMatch(css, /@media \(max-width:/, 'the migration must not invent responsive layout rules');
   assert.doesNotMatch(footer, /textDecoration:\s*"underline"/);
+  assert.match(code, /terminalPrompt\s*\?\s*\(/);
+  assert.match(code, /<pre className="!py-4"/);
+  assert.match(code, /normalized\.split\(['"]\\n['"]\)\.map/);
+  assert.match(code, /className="flex gap-3"/);
+  assert.match(code, /<span[^>]*color:\s*"#fbbf24"[^>]*>\$<\/span>/s);
+  assert.match(code, /<CodeBlock code=\{code\} lang="bash" filename="terminal" terminalPrompt/);
+
+  for (const page of ['Home', 'accounts', 'cli', 'getting-started', 'identity', 'payments']) {
+    assert.doesNotMatch(read(`src/react-pages/${page}.tsx`), /#8291a5/, `${page} must retain the production text color`);
+  }
 });

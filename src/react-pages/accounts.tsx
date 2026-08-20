@@ -207,27 +207,27 @@ export default function AccountsPage() {
           <tbody>
             <tr style={{ borderBottom: "1px solid var(--border)" }}>
               <td style={{ padding: "8px 12px" }}><code>credentials.apiKeyId</code></td>
-              <td style={{ padding: "8px 12px", color: "#8291a5" }}>string</td>
+              <td style={{ padding: "8px 12px", color: "#64748b" }}>string</td>
               <td style={{ padding: "8px 12px", color: "#94a3b8" }}>CDP API Key ID</td>
             </tr>
             <tr style={{ borderBottom: "1px solid var(--border)" }}>
               <td style={{ padding: "8px 12px" }}><code>credentials.apiKeySecret</code></td>
-              <td style={{ padding: "8px 12px", color: "#8291a5" }}>string</td>
+              <td style={{ padding: "8px 12px", color: "#64748b" }}>string</td>
               <td style={{ padding: "8px 12px", color: "#94a3b8" }}>CDP API Key Secret</td>
             </tr>
             <tr style={{ borderBottom: "1px solid var(--border)" }}>
               <td style={{ padding: "8px 12px" }}><code>credentials.walletSecret</code></td>
-              <td style={{ padding: "8px 12px", color: "#8291a5" }}>string</td>
+              <td style={{ padding: "8px 12px", color: "#64748b" }}>string</td>
               <td style={{ padding: "8px 12px", color: "#94a3b8" }}>CDP Wallet Secret (EC P-256 PKCS8)</td>
             </tr>
             <tr style={{ borderBottom: "1px solid var(--border)" }}>
               <td style={{ padding: "8px 12px" }}><code>options.name</code></td>
-              <td style={{ padding: "8px 12px", color: "#8291a5" }}>string?</td>
+              <td style={{ padding: "8px 12px", color: "#64748b" }}>string?</td>
               <td style={{ padding: "8px 12px", color: "#94a3b8" }}>Account name (idempotent). Default: &quot;a3stack-agent&quot;</td>
             </tr>
             <tr>
               <td style={{ padding: "8px 12px" }}><code>options.testnet</code></td>
-              <td style={{ padding: "8px 12px", color: "#8291a5" }}>boolean?</td>
+              <td style={{ padding: "8px 12px", color: "#64748b" }}>boolean?</td>
               <td style={{ padding: "8px 12px", color: "#94a3b8" }}>Use Base Sepolia instead of mainnet</td>
             </tr>
           </tbody>
@@ -302,7 +302,7 @@ export default function AccountsPage() {
             </tr>
             <tr>
               <td style={{ padding: "8px 12px" }}>Other EVM chains</td>
-              <td style={{ padding: "8px 12px", color: "#8291a5" }}>Use @a3stack/identity (requires ETH for gas)</td>
+              <td style={{ padding: "8px 12px", color: "#64748b" }}>Use @a3stack/identity (requires ETH for gas)</td>
             </tr>
           </tbody>
         </table>

@@ -250,7 +250,7 @@ export default function IdentityPage() {
         <p style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 14, color: "#e2e8f0", margin: 0 }}>
           eip155:{"{chainId}"}:{"{registry}"}#{"{agentId}"}
         </p>
-        <p style={{ fontSize: 12, color: "#8291a5", margin: "8px 0 0", fontFamily: "'JetBrains Mono', monospace" }}>
+        <p style={{ fontSize: 12, color: "#64748b", margin: "8px 0 0", fontFamily: "'JetBrains Mono', monospace" }}>
           Example: eip155:8453:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432#2376
         </p>
       </div>

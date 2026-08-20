@@ -159,7 +159,7 @@ export default function CliPage() {
         ].map(([cmd, desc]) => (
           <>
             <span key={cmd} style={{ color: "#fbbf24" }}>{cmd}</span>
-            <span key={desc} style={{ color: "#8291a5" }}>{desc}</span>
+            <span key={desc} style={{ color: "#64748b" }}>{desc}</span>
           </>
         ))}
       </div>

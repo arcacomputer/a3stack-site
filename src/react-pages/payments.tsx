@@ -183,7 +183,7 @@ export default function PaymentsPage() {
             fontSize: 13,
           }}>
             <span style={{ color: "#fbbf24" }}>{row.base}</span>
-            <span style={{ color: "#8291a5" }}>= {row.human}</span>
+            <span style={{ color: "#64748b" }}>= {row.human}</span>
           </div>
         ))}
       </div>
