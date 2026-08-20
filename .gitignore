@@ -13,12 +13,10 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
+# Astro / Cloudflare generated output
+/dist/
+/.astro/
+/.wrangler/
 
 # misc
 .DS_Store
