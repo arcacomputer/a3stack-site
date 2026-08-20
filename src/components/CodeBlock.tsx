@@ -17,7 +17,7 @@ export default function CodeBlock({ code, lang = "typescript", filename }: CodeB
             <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e] opacity-70" />
             <span className="w-2.5 h-2.5 rounded-full bg-[#28c840] opacity-70" />
           </div>
-          {filename && <span className="text-[#8291a5] font-mono text-xs ml-2">{filename}</span>}
+          {filename && <span className="text-[#4b5f73] font-mono text-xs ml-2">{filename}</span>}
         </div>
         <div className="flex items-center gap-3">
           <span className="lang">{lang}</span>

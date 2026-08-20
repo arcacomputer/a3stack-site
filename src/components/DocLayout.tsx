@@ -75,7 +75,7 @@ export default function DocLayout({ children, title, description, currentPath, p
                     padding: "7px 20px",
                     fontSize: 13.5,
                     fontWeight: active ? 600 : 400,
-                    color: active ? "#fbbf24" : "#8291a5",
+                    color: active ? "#fbbf24" : "#64748b",
                     background: active ? "rgba(251,191,36,0.06)" : "transparent",
                     borderLeft: active ? "2px solid #fbbf24" : "2px solid transparent",
                     textDecoration: "none",
@@ -89,7 +89,7 @@ export default function DocLayout({ children, title, description, currentPath, p
                     <span style={{
                       fontFamily: "'JetBrains Mono', monospace",
                       fontSize: 9,
-                      color: "#8291a5",
+                      color: "#4b5f73",
                       background: "rgba(255,255,255,0.03)",
                       padding: "1px 5px",
                       borderRadius: 3,
@@ -111,7 +111,7 @@ export default function DocLayout({ children, title, description, currentPath, p
             href="https://github.com/arcabotai/a3stack"
             target="_blank"
             rel="noopener"
-            style={{ color: "#8291a5", fontSize: 12, textDecoration: "none", display: "block", marginBottom: 8 }}
+            style={{ color: "#4b5f73", fontSize: 12, textDecoration: "none", display: "block", marginBottom: 8 }}
           >
             GitHub →
           </a>
@@ -119,7 +119,7 @@ export default function DocLayout({ children, title, description, currentPath, p
             href="https://arcabot.ai"
             target="_blank"
             rel="noopener"
-            style={{ color: "#8291a5", fontSize: 12, textDecoration: "none", display: "block" }}
+            style={{ color: "#4b5f73", fontSize: 12, textDecoration: "none", display: "block" }}
           >
             arcabot.ai →
           </a>

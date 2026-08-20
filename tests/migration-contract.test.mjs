@@ -81,23 +81,22 @@ test('ships discovery, security, 404, favicon, and copy assets', () => {
   assert.match(smoke, /response\.status, 308/, 'runtime smoke must preserve Vercel redirect status');
 });
 
-test('accessibility and responsive improvements are explicit', () => {
+test('preserves the observed live visual behavior without redesigning the site', () => {
   const nav = read('src/components/Nav.tsx');
-  assert.match(nav, /<details className="mobile-nav"/);
-  assert.match(nav, /data-mobile-nav-toggle/);
-
   const code = read('src/components/CodeBlock.tsx');
+  const layout = read('src/layouts/BaseLayout.astro');
+  const footer = read('src/components/Footer.tsx');
+  const css = read('src/styles/global.css');
+
   assert.match(code, /<pre tabIndex=\{0\} aria-label="Scrollable code example"/);
   assert.match(code, /aria-live="polite"/);
-
-  const layout = read('src/layouts/BaseLayout.astro');
   assert.match(layout, /class="skip-link"/);
   assert.match(layout, /initial-scale=1/);
-
-  const footer = read('src/components/Footer.tsx');
   assert.match(footer, /aria-label="A3Stack on GitHub"/);
-
-  const css = read('src/styles/global.css');
-  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
-  assert.match(css, /\.mobile-nav/);
+  assert.doesNotMatch(css, /fonts\.googleapis\.com/, 'live production does not load the declared Google fonts');
+  assert.match(css, /--text-muted:\s*#4b5f73/);
+  assert.match(css, /\.copy-code[^}]*opacity:\s*0/s);
+  assert.doesNotMatch(nav, /mobile-nav/, 'the migration must not invent a new mobile navigation design');
+  assert.doesNotMatch(css, /@media \(max-width:/, 'the migration must not invent responsive layout rules');
+  assert.doesNotMatch(footer, /textDecoration:\s*"underline"/);
 });

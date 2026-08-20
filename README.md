@@ -7,7 +7,7 @@ Documentation and marketing site for **A3Stack** — identity, payments, and dat
 
 ## Architecture
 
-The site is an Astro 7 static build. React is retained only as a build-time renderer for the existing page components; the generated pages ship no React runtime. Cloudflare Workers Static Assets serves `dist/` with a custom 404 and `_headers`. No `@astrojs/cloudflare` adapter or Worker server runtime is required.
+The site is an Astro 7 static build. React is retained only as a build-time renderer for the existing page components; the generated pages ship no React runtime. Cloudflare Workers Static Assets serves `dist/` with a custom 404 and `_headers`. No `@astrojs/cloudflare` adapter, Astro SSR, or application server runtime is required; the small edge Worker exists only to preserve the prior 308/404 transport contract.
 
 `wrangler.jsonc` is production-safe and custom-domain-ready (`workers_dev` and preview URLs are disabled), but intentionally defines no `routes`. A domain must be attached separately only after an approved cutover from the current Vercel baseline.
 
