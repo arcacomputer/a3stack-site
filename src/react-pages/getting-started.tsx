@@ -193,10 +193,10 @@ export default function GettingStarted() {
       <h2>What's next</h2>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 4 }}>
         {[
-          { href: "/identity", label: "Identity deep dive", desc: "ERC-8004 API reference, multi-chain, verification" },
-          { href: "/payments", label: "Payments reference", desc: "PaymentClient, PaymentServer, x402 flow" },
-          { href: "/data", label: "Data / MCP docs", desc: "Server, client, probeAgent, payment gating" },
-          { href: "/examples", label: "All examples", desc: "6 complete example files with annotations" },
+          { href: "/identity/", label: "Identity deep dive", desc: "ERC-8004 API reference, multi-chain, verification" },
+          { href: "/payments/", label: "Payments reference", desc: "PaymentClient, PaymentServer, x402 flow" },
+          { href: "/data/", label: "Data / MCP docs", desc: "Server, client, probeAgent, payment gating" },
+          { href: "/examples/", label: "All examples", desc: "6 complete example files with annotations" },
         ].map((card) => (
           <a
             key={card.href}

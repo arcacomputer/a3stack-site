@@ -186,7 +186,7 @@ export default function ExamplesPage() {
       <div style={{ marginTop: 48, padding: "20px 24px", background: "rgba(251,191,36,0.04)", borderRadius: 12, border: "1px solid rgba(251,191,36,0.1)" }}>
         <p style={{ color: "#94a3b8", fontSize: 14, margin: 0, lineHeight: 1.6 }}>
           All examples are in the{" "}
-          <a href="https://github.com/arcabotai/a3stack/tree/main/examples" target="_blank" rel="noopener" style={{ color: "#fbbf24", textDecoration: "none" }}>
+          <a href="https://github.com/arcabotai/a3stack/tree/main/examples" target="_blank" rel="noopener" style={{ color: "#fbbf24", textDecoration: "underline", textUnderlineOffset: 3 }}>
             examples/
           </a>{" "}
           directory on GitHub. Clone the repo and run them with <code style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12, background: "rgba(255,255,255,0.06)", padding: "2px 6px", borderRadius: 4, color: "#fbbf24" }}>npx tsx examples/00-verify-identity.ts</code>

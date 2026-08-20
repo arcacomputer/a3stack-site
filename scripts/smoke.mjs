@@ -15,14 +15,15 @@ for (const route of routes) {
 for (const route of routes.slice(1)) {
   const slashless = route.slice(0, -1);
   const response = await fetch(`${base}${slashless}`, { redirect: 'manual' });
-  assert.equal(response.status, 307, `${slashless} returned ${response.status}`);
+  assert.equal(response.status, 308, `${slashless} returned ${response.status}`);
   assert.equal(response.headers.get('location'), route);
 }
 
-for (const route of ['/definitely-missing-a3stack-page', '/definitely-missing-a3stack-page/']) {
-  const missing = await fetch(`${base}${route}`, { redirect: 'manual' });
-  assert.equal(missing.status, 404, `${route} returned ${missing.status}`);
-  assert.match(await missing.text(), /Page not found/);
-}
+const missingSlashless = await fetch(`${base}/definitely-missing-a3stack-page`, { redirect: 'manual' });
+assert.equal(missingSlashless.status, 308);
+assert.equal(missingSlashless.headers.get('location'), '/definitely-missing-a3stack-page/');
+const missing = await fetch(`${base}/definitely-missing-a3stack-page/`, { redirect: 'manual' });
+assert.equal(missing.status, 404);
+assert.match(await missing.text(), /This page could not be found\./);
 
-console.log(`Runtime smoke passed: ${routes.length} routes, ${routes.length - 1} slash redirects, and 2 custom 404 forms at ${base}.`);
+console.log(`Runtime smoke passed: ${routes.length} routes, ${routes.length - 1} known 308 redirects, and an unknown 308 → 404 chain at ${base}.`);

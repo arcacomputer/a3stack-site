@@ -26,6 +26,7 @@ export default function CodeBlock({ code, lang = "typescript", filename }: CodeB
             <Check className="check-icon" size={12} />
             <span>Copy</span>
           </button>
+          <span className="sr-only" data-copy-status aria-live="polite" />
         </div>
       </div>
       <pre tabIndex={0} aria-label="Scrollable code example"><code>{normalized}</code></pre>

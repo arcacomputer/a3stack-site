@@ -1,12 +1,12 @@
 const links = [
   { section: "Docs", items: [
-    { label: "Get Started", href: "/getting-started" },
-    { label: "Identity", href: "/identity" },
-    { label: "Payments", href: "/payments" },
-    { label: "Data / MCP", href: "/data" },
-    { label: "Core", href: "/core" },
-    { label: "CLI", href: "/cli" },
-    { label: "Examples", href: "/examples" },
+    { label: "Get Started", href: "/getting-started/" },
+    { label: "Identity", href: "/identity/" },
+    { label: "Payments", href: "/payments/" },
+    { label: "Data / MCP", href: "/data/" },
+    { label: "Core", href: "/core/" },
+    { label: "CLI", href: "/cli/" },
+    { label: "Examples", href: "/examples/" },
   ]},
   { section: "Packages", items: [
     { label: "@a3stack/core", href: "https://www.npmjs.com/package/@a3stack/core" },

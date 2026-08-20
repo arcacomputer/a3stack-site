@@ -41,7 +41,7 @@ const pillars = [
     badge: "@a3stack/accounts",
     title: "Gasless smart accounts",
     description: "Create ERC-4337 smart accounts with automatic gas sponsorship via CDP Paymaster. Register agents on-chain with zero ETH.",
-    href: "/accounts",
+    href: "/accounts/",
     items: [
       "Zero gas registration (CDP Paymaster)",
       "ERC-4337 smart accounts on Base",
@@ -58,7 +58,7 @@ const pillars = [
     badge: "@a3stack/identity",
     title: "Verifiable on-chain identity",
     description: "Register your agent as an ERC-8004 NFT on Base. Other agents can cryptographically verify who you are across 22 EVM chains.",
-    href: "/identity",
+    href: "/identity/",
     items: [
       "ERC-8004 registration (ERC-721)",
       "Cross-chain discovery",
@@ -75,7 +75,7 @@ const pillars = [
     badge: "@a3stack/payments",
     title: "Agent-to-agent payments",
     description: "Charge other agents for your services using the x402 protocol. Auto-pay via EIP-3009 signatures — no gas, instant, USDC on Base.",
-    href: "/payments",
+    href: "/payments/",
     items: [
       "x402 protocol (HTTP 402)",
       "EIP-3009 gasless authorization",
@@ -92,7 +92,7 @@ const pillars = [
     badge: "@a3stack/data",
     title: "MCP with identity + payments",
     description: "Build MCP servers that verify who connects and charge per call. Or connect to any MCP server with auto-payment and identity resolution.",
-    href: "/data",
+    href: "/data/",
     items: [
       "MCP server with payment gating",
       "Auto-payment client",
@@ -122,7 +122,7 @@ const packages = [
 
 export default function Home() {
   return (
-    <main style={{ paddingTop: 80 }}>
+    <main id="main-content" tabIndex={-1} style={{ paddingTop: 80 }}>
       {/* Hero */}
       <section style={{
         position: "relative",
@@ -224,7 +224,7 @@ export default function Home() {
           {/* CTAs */}
           <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap", marginBottom: 64 }}>
             <a
-              href="/getting-started"
+              href="/getting-started/"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -243,7 +243,7 @@ export default function Home() {
               Get Started <ArrowRight size={16} />
             </a>
             <a
-              href="/core"
+              href="/core/"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -612,7 +612,7 @@ export default function Home() {
           </p>
           <div className="cta-row" style={{ display: "flex", gap: 12, justifyContent: "center" }}>
             <a
-              href="/getting-started"
+              href="/getting-started/"
               style={{
                 display: "inline-flex",
                 alignItems: "center",

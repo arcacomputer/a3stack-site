@@ -1,12 +1,12 @@
 const navItems = [
-  { href: "/getting-started", label: "Get Started" },
-  { href: "/accounts", label: "Accounts" },
-  { href: "/identity", label: "Identity" },
-  { href: "/payments", label: "Payments" },
-  { href: "/data", label: "Data" },
-  { href: "/core", label: "Core" },
-  { href: "/cli", label: "CLI" },
-  { href: "/examples", label: "Examples" },
+  { href: "/getting-started/", label: "Get Started" },
+  { href: "/accounts/", label: "Accounts" },
+  { href: "/identity/", label: "Identity" },
+  { href: "/payments/", label: "Payments" },
+  { href: "/data/", label: "Data" },
+  { href: "/core/", label: "Core" },
+  { href: "/cli/", label: "CLI" },
+  { href: "/examples/", label: "Examples" },
 ];
 
 export default function Nav({ currentPath = "/" }: { currentPath?: string }) {
@@ -21,7 +21,7 @@ export default function Nav({ currentPath = "/" }: { currentPath?: string }) {
           </a>
           <div className="nav-links">
             {navItems.map((item) => {
-              const active = currentPath === item.href || currentPath.startsWith(`${item.href}/`);
+              const active = currentPath === item.href || currentPath === item.href.slice(0, -1);
               return <a key={item.href} href={item.href} className={active ? "nav-item active" : "nav-item"}>{item.label}</a>;
             })}
           </div>
@@ -32,10 +32,10 @@ export default function Nav({ currentPath = "/" }: { currentPath?: string }) {
             <a href="https://www.npmjs.com/package/a3stack" target="_blank" rel="noopener noreferrer" className="npm-link">npm install</a>
           </div>
           <details className="mobile-nav">
-            <summary aria-label="Open navigation menu"><span aria-hidden="true" /></summary>
+            <summary data-mobile-nav-toggle aria-label="Open navigation menu"><span aria-hidden="true" /></summary>
             <div className="mobile-nav-panel">
               {navItems.map((item) => {
-                const active = currentPath === item.href || currentPath.startsWith(`${item.href}/`);
+                const active = currentPath === item.href || currentPath === item.href.slice(0, -1);
                 return <a key={item.href} href={item.href} className={active ? "nav-item active" : "nav-item"}>{item.label}</a>;
               })}
               <a href="https://github.com/arcabotai/a3stack" target="_blank" rel="noopener noreferrer">GitHub</a>

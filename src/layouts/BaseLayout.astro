@@ -19,18 +19,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="keywords" content="AI agents, ERC-8004, x402, MCP, agent identity, agent payments, arcabot" />
     {noindex && <meta name="robots" content="noindex" />}
-    <link rel="canonical" href={canonical} />
+    {!noindex && <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:title" content="A3Stack — AI Agent Infrastructure SDK" />
     <meta property="og:description" content="Identity × Payments × Data for AI agents." />
-    <meta property="og:url" content={canonical} />
+    {!noindex && <meta property="og:url" content={canonical} />}
     <meta property="og:site_name" content="A3Stack" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -40,6 +40,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <script is:inline src="/scripts/site.js" defer></script>
   </head>
   <body class="grain">
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <Nav currentPath={Astro.url.pathname} />
     <div class="site-shell">
       <slot />

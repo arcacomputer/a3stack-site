@@ -52,7 +52,7 @@ npm run smoke
 
 `smoke` checks every published route, security headers, slash redirects, and the custom 404 against `http://127.0.0.1:8787`. Override with `SMOKE_BASE_URL` if Wrangler uses another address.
 
-Cloudflare Static Assets' `auto-trailing-slash` behavior is the closest supported match to the previous Vercel export: known slashless routes redirect to their canonical slash form with **307** (Vercel used **308**). Unknown slashless paths return the branded **404** directly rather than redirecting once before the 404. Both differences are platform behavior and are locked by the local runtime smoke test.
+A tiny stateless Worker runs before Static Assets to preserve the previous Vercel transport contract: extensionless slashless paths receive **308** to their slash form, including unknown paths, which then receive the branded **404**. The query string is preserved.
 
 ## Deployment boundary
 

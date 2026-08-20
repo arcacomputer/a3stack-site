@@ -43,8 +43,14 @@ test('configures current Workers Static Assets production behavior', () => {
   assert.equal(config.workers_dev, false);
   assert.equal(config.preview_urls, false);
   assert.equal(config.assets?.directory, './dist');
+  assert.equal(config.assets?.binding, 'ASSETS');
+  assert.equal(config.assets?.run_worker_first, true);
   assert.equal(config.assets?.not_found_handling, '404-page');
   assert.equal(config.assets?.html_handling, 'auto-trailing-slash');
+  assert.equal(config.main, 'src/worker.ts');
+  const worker = read('src/worker.ts');
+  assert.match(worker, /status:\s*308/);
+  assert.match(worker, /env\.ASSETS\.fetch\(request\)/);
   assert.equal(config.compatibility_date, '2026-08-20');
   assert.equal(config.routes, undefined, 'canary must not attach custom domains');
 });
@@ -60,6 +66,8 @@ test('ships discovery, security, 404, favicon, and copy assets', () => {
   assert.match(headers, /X-Frame-Options: DENY/);
   assert.match(headers, /Referrer-Policy: strict-origin-when-cross-origin/);
   assert.match(headers, /Permissions-Policy:/);
+  assert.match(headers, /Strict-Transport-Security:/);
+  assert.match(headers, /Content-Security-Policy:/);
   assert.match(headers, /\/_astro\/\*/);
   assert.match(headers, /immutable/);
 
@@ -70,16 +78,21 @@ test('ships discovery, security, 404, favicon, and copy assets', () => {
 
   const smoke = read('scripts/smoke.mjs');
   assert.match(smoke, /\/accounts\//, 'runtime smoke must request canonical slash routes');
-  assert.match(smoke, /response\.status, 307/, 'runtime smoke must lock Cloudflare redirect status');
+  assert.match(smoke, /response\.status, 308/, 'runtime smoke must preserve Vercel redirect status');
 });
 
 test('accessibility and responsive improvements are explicit', () => {
   const nav = read('src/components/Nav.tsx');
   assert.match(nav, /<details className="mobile-nav"/);
-  assert.match(nav, /<summary[^>]*aria-label="Open navigation menu"/);
+  assert.match(nav, /data-mobile-nav-toggle/);
 
   const code = read('src/components/CodeBlock.tsx');
   assert.match(code, /<pre tabIndex=\{0\} aria-label="Scrollable code example"/);
+  assert.match(code, /aria-live="polite"/);
+
+  const layout = read('src/layouts/BaseLayout.astro');
+  assert.match(layout, /class="skip-link"/);
+  assert.match(layout, /initial-scale=1/);
 
   const footer = read('src/components/Footer.tsx');
   assert.match(footer, /aria-label="A3Stack on GitHub"/);

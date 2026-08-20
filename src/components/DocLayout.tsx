@@ -4,23 +4,23 @@ const sections = [
     title: "Overview",
     items: [
       { href: "/", label: "Introduction" },
-      { href: "/getting-started", label: "Getting Started" },
+      { href: "/getting-started/", label: "Getting Started" },
     ],
   },
   {
     title: "Packages",
     items: [
-      { href: "/identity", label: "Identity", badge: "@a3stack/identity" },
-      { href: "/payments", label: "Payments", badge: "@a3stack/payments" },
-      { href: "/data", label: "Data / MCP", badge: "@a3stack/data" },
-      { href: "/core", label: "Core", badge: "@a3stack/core" },
+      { href: "/identity/", label: "Identity", badge: "@a3stack/identity" },
+      { href: "/payments/", label: "Payments", badge: "@a3stack/payments" },
+      { href: "/data/", label: "Data / MCP", badge: "@a3stack/data" },
+      { href: "/core/", label: "Core", badge: "@a3stack/core" },
     ],
   },
   {
     title: "Reference",
     items: [
-      { href: "/cli", label: "CLI" },
-      { href: "/examples", label: "Examples" },
+      { href: "/cli/", label: "CLI" },
+      { href: "/examples/", label: "Examples" },
     ],
   },
 ];
@@ -63,7 +63,7 @@ export default function DocLayout({ children, title, description, currentPath, p
               {section.title}
             </h5>
             {section.items.map((item) => {
-              const active = item.href === "/" ? currentPath === "/" : currentPath.startsWith(item.href);
+              const active = item.href === "/" ? currentPath === "/" : currentPath === item.href || currentPath === item.href.slice(0, -1);
               return (
                 <a
                   key={item.href}
@@ -127,7 +127,7 @@ export default function DocLayout({ children, title, description, currentPath, p
       </aside>
 
       {/* Main content */}
-      <main className="doc-main" style={{ flex: 1, minWidth: 0, padding: "48px 64px 80px", maxWidth: 900 }}>
+      <main id="main-content" tabIndex={-1} className="doc-main" style={{ flex: 1, minWidth: 0, padding: "48px 64px 80px", maxWidth: 900 }}>
         {/* Page header */}
         <div style={{ marginBottom: 40 }}>
           {pill && (
