@@ -136,7 +136,7 @@ export default function CliPage() {
       </p>
       <TerminalBlock code="npx a3stack --help" />
 
-      <div style={{
+      <div className="responsive-grid cli-meta-grid" style={{
         display: "grid",
         gridTemplateColumns: "auto 1fr",
         gap: "8px 24px",

@@ -2,7 +2,7 @@
 
 Documentation and marketing site for **A3Stack** — identity, payments, and data infrastructure for AI agents.
 
-- Canonical site: https://a3stack.arcabot.ai
+- Production origin: https://a3stack.arcabot.ai
 - SDK repo: https://github.com/arcabotai/a3stack
 
 ## Architecture
@@ -10,6 +10,12 @@ Documentation and marketing site for **A3Stack** — identity, payments, and dat
 The site is an Astro 7 static build. React is retained only as a build-time renderer for the existing page components; the generated pages ship no React runtime. Cloudflare Workers Static Assets serves `dist/` with a custom 404 and `_headers`. No `@astrojs/cloudflare` adapter, Astro SSR, or application server runtime is required; the small edge Worker exists only to preserve the prior 308/404 transport contract.
 
 `wrangler.jsonc` is production-safe and custom-domain-ready (`workers_dev` and preview URLs are disabled), but intentionally defines no `routes`. A domain must be attached separately only after an approved cutover from the current Vercel baseline.
+
+## Migration parity baseline
+
+The migration preserves the existing metadata surface: it keeps the constant root `og:url` and does not add canonical links, sitemap output, or a robots policy. The 404 keeps the compact Next-style 404 presentation inside the shared A3Stack navigation and footer.
+
+The approved visible exception is responsive repair. At 320–390px, navigation is available through a native keyboard-safe disclosure, documentation becomes single-column, card grids and footer groups reflow, wide tables and code blocks scroll locally, and the document itself does not overflow horizontally. Existing security headers, skip navigation, focus treatment, copy status announcements, and other invisible accessibility hardening remain in place.
 
 ## Requirements
 

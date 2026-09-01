@@ -31,7 +31,22 @@ export default function Nav({ currentPath = "/" }: { currentPath?: string }) {
             </a>
             <a href="https://www.npmjs.com/package/a3stack" target="_blank" rel="noopener noreferrer" className="npm-link">npm install</a>
           </div>
-
+          <details className="mobile-nav">
+            <summary data-mobile-nav-toggle aria-controls="mobile-nav-panel" aria-label="Open navigation menu">
+              <svg className="menu-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+              <svg className="close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+            </summary>
+            <div id="mobile-nav-panel" className="mobile-nav-panel">
+              {navItems.map((item) => {
+                const active = currentPath === item.href || currentPath === item.href.slice(0, -1);
+                return <a key={item.href} href={item.href} className={active ? "mobile-nav-item active" : "mobile-nav-item"}>{item.label}</a>;
+              })}
+              <div className="mobile-nav-actions">
+                <a href="https://github.com/arcabotai/a3stack" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.npmjs.com/package/a3stack" target="_blank" rel="noopener noreferrer" className="npm-link">npm install</a>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
     </nav>

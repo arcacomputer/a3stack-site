@@ -122,7 +122,7 @@ const packages = [
 
 export default function Home() {
   return (
-    <main id="main-content" tabIndex={-1} style={{ paddingTop: 80 }}>
+    <main id="main-content" tabIndex={-1} className="home-page" style={{ paddingTop: 80 }}>
       {/* Hero */}
       <section style={{
         position: "relative",
@@ -301,7 +301,7 @@ export default function Home() {
         borderBottom: "1px solid var(--border)",
       }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div className="responsive-grid problem-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
             <div>
               <div style={{ marginBottom: 16 }}>
                 <span className="pill pill-gold">The Problem</span>
@@ -382,7 +382,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
+          <div className="responsive-grid pillar-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 24 }}>
             {pillars.map((pillar) => (
               <a
                 key={pillar.label}
@@ -496,7 +496,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+          <div className="responsive-grid timeline-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
             {timeline.map((item) => (
               <div
                 key={item.step}
@@ -539,7 +539,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, maxWidth: 1000, margin: "0 auto" }}>
+          <div className="responsive-grid package-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, maxWidth: 1000, margin: "0 auto" }}>
             {packages.map((pkg) => (
               <div
                 key={pkg.name}

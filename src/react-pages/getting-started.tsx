@@ -191,7 +191,7 @@ export default function GettingStarted() {
 
       {/* What's next */}
       <h2>What's next</h2>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 4 }}>
+      <div className="responsive-grid doc-card-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 4 }}>
         {[
           { href: "/identity/", label: "Identity deep dive", desc: "ERC-8004 API reference, multi-chain, verification" },
           { href: "/payments/", label: "Payments reference", desc: "PaymentClient, PaymentServer, x402 flow" },

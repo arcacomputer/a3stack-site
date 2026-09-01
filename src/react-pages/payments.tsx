@@ -166,7 +166,7 @@ export default function PaymentsPage() {
       <p>
         USDC has 6 decimal places. Amounts are always in base units (strings):
       </p>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 24 }}>
+      <div className="responsive-grid amount-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 24 }}>
         {[
           { base: '"1000"', human: "0.001 USDC" },
           { base: '"10000"', human: "0.01 USDC" },

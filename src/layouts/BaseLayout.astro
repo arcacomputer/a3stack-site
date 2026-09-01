@@ -12,7 +12,6 @@ interface Props {
 const defaultTitle = 'A3Stack — Identity × Payments × Data for AI Agents';
 const defaultDescription = 'Give your AI agent an identity, a wallet, and an API — in one SDK. A3Stack connects ERC-8004 identity, x402 payments, and MCP data into a unified agent infrastructure layer.';
 const { title = defaultTitle, description = defaultDescription, noindex = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -25,12 +24,10 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <meta name="keywords" content="AI agents, ERC-8004, x402, MCP, agent identity, agent payments, arcabot" />
     {noindex && <meta name="robots" content="noindex" />}
-    {!noindex && <link rel="canonical" href={canonical} />}
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:title" content="A3Stack — AI Agent Infrastructure SDK" />
     <meta property="og:description" content="Identity × Payments × Data for AI agents." />
-    {!noindex && <meta property="og:url" content={canonical} />}
+    <meta property="og:url" content="https://a3stack.arcabot.ai" />
     <meta property="og:site_name" content="A3Stack" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />

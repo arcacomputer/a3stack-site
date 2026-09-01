@@ -23,14 +23,14 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer style={{
+    <footer className="site-footer" style={{
       background: "var(--bg-surface)",
       borderTop: "1px solid var(--border)",
       padding: "64px 24px 40px",
       marginTop: "auto",
     }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
+        <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
           {/* Brand */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
@@ -104,7 +104,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div style={{
+        <div className="footer-bottom" style={{
           borderTop: "1px solid var(--border)",
           paddingTop: 24,
           display: "flex",

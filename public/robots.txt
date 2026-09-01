@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://a3stack.arcabot.ai/sitemap-index.xml
