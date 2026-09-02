@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "a3stack-site",
+  "name": "a3stack-site-canary",
   "main": "src/worker.ts",
   "compatibility_date": "2026-08-20",
   "workers_dev": false,

@@ -14,11 +14,14 @@ test('uses Astro static output without a server adapter', () => {
   assert.equal(pkg.dependencies?.['@astrojs/sitemap'], undefined, 'migration must not add unapproved sitemap behavior');
   assert.equal(pkg.dependencies?.next, undefined, 'Next.js must be removed');
   assert.equal(pkg.dependencies?.['@astrojs/cloudflare'], undefined, 'static output must not install the Cloudflare server adapter');
+  assert.equal(pkg.devDependencies?.['@astrojs/cloudflare'], undefined, 'static output must not install the Cloudflare server adapter as a devDependency');
+  assert.equal(pkg.dependencies?.['@opennextjs/cloudflare'], undefined, 'OpenNext must not be introduced');
 
   const config = read('astro.config.mjs');
   assert.match(config, /output:\s*['"]static['"]/);
   assert.match(config, /site:\s*['"]https:\/\/a3stack\.arcabot\.ai['"]/);
   assert.doesNotMatch(config, /@astrojs\/sitemap|sitemap\(\)/);
+  assert.doesNotMatch(config, /@astrojs\/cloudflare|adapter:\s*cloudflare/, 'static site must not enable the Cloudflare SSR adapter');
 });
 
 test('defines every published route and migration metadata', () => {
@@ -40,7 +43,7 @@ test('defines every published route and migration metadata', () => {
 
 test('configures current Workers Static Assets production behavior', () => {
   const config = JSON.parse(read('wrangler.jsonc'));
-  assert.equal(config.name, 'a3stack-site');
+  assert.equal(config.name, 'a3stack-site-canary');
   assert.equal(config.workers_dev, false);
   assert.equal(config.preview_urls, false);
   assert.equal(config.assets?.directory, './dist');
@@ -133,6 +136,8 @@ test('documents the approved migration parity baseline', () => {
   assert.match(readme, /does not add canonical links, sitemap output, or a robots policy/);
   assert.match(readme, /320–390px/);
   assert.match(readme, /compact Next-style 404/);
+  assert.match(readme, /a3stack-site-canary/);
+  assert.match(readme, /No `@astrojs\/cloudflare` adapter/);
 });
 
 test('preserves the observed live visual behavior without redesigning the site', () => {
