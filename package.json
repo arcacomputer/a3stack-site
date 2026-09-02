@@ -1,24 +1,37 @@
 {
   "name": "a3stack-site",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "astro dev",
+    "test": "node --test tests/*.test.mjs",
+    "check": "astro check && npm test",
+    "build": "astro build && node scripts/check-built-site.mjs",
+    "preview": "astro preview",
+    "typecheck": "astro check",
+    "cf:dev": "wrangler dev",
+    "cf:dry-run": "wrangler deploy --dry-run --outdir .wrangler/dry-run",
+    "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
+    "@astrojs/react": "^6.0.4",
+    "@tailwindcss/vite": "^4.1.12",
+    "astro": "^7.2.4",
     "lucide-react": "^0.575.0",
-    "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@astrojs/check": "^0.9.6",
+    "@types/node": "^22.0.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5.9.2",
+    "wrangler": "^4.124.0"
   }
 }

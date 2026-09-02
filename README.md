@@ -2,27 +2,64 @@
 
 Documentation and marketing site for **A3Stack** — identity, payments, and data infrastructure for AI agents.
 
-- Live site: https://a3stack.arcabot.ai
+- Production origin: https://a3stack.arcabot.ai
 - SDK repo: https://github.com/arcabotai/a3stack
-- Vercel project: `a3stack-site`
+
+## Architecture
+
+The site is an Astro 7 static build. React is retained only as a build-time renderer for the existing page components; the generated pages ship no React runtime. Cloudflare Workers Static Assets serves `dist/` with a custom 404 and `_headers`. No `@astrojs/cloudflare` adapter, Astro SSR, or application server runtime is required (official Cloudflare guidance for a fully pre-rendered site); the small edge Worker exists only to preserve the prior 308/404 transport contract.
+
+`wrangler.jsonc` deploys to the existing Worker named `a3stack-site-canary`. It is production-safe and custom-domain-ready (`workers_dev` and preview URLs are disabled), but intentionally defines no `routes`. Luis will assign a canary hostname later. A production domain must be attached separately only after an approved cutover from the current Vercel baseline. Do not create a second Worker.
+
+## Migration parity baseline
+
+The migration preserves the existing metadata surface: it keeps the constant root `og:url` and does not add canonical links, sitemap output, or a robots policy. The 404 keeps the compact Next-style 404 presentation inside the shared A3Stack navigation and footer.
+
+The approved visible exception is responsive repair. At 320–390px, navigation is available through a native keyboard-safe disclosure, documentation becomes single-column, card grids and footer groups reflow, wide tables and code blocks scroll locally, and the document itself does not overflow horizontally. Existing security headers, skip navigation, focus treatment, copy status announcements, and other invisible accessibility hardening remain in place.
+
+## Requirements
+
+- Node.js 22.12 or newer
+- npm 10 or newer
 
 ## Local development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-Open http://localhost:3000.
+Astro starts on http://localhost:4321 by default.
 
-## Production build
+## Checks and production build
+
+```bash
+npm test                 # migration source contract
+npm run typecheck        # Astro diagnostics + TypeScript
+npm run check            # diagnostics + tests
+npm run build            # static build + generated-site contract
+npm run cf:dry-run       # validate/package Workers assets without upload
+```
+
+## Local Cloudflare runtime
+
+Build first, then run Wrangler's local Static Assets runtime:
 
 ```bash
 npm run build
+npm run cf:dev
 ```
 
-## Deployment
+In another shell:
 
-The current production site is deployed on Vercel and aliased to `https://a3stack.arcabot.ai`.
+```bash
+npm run smoke
+```
 
-Use the existing Vercel project; do not migrate the domain unless explicitly requested.
+`smoke` checks every published route, security headers, slash redirects, and the custom 404 against `http://127.0.0.1:8787`. Override with `SMOKE_BASE_URL` if Wrangler uses another address.
+
+A tiny stateless Worker runs before Static Assets to preserve the previous Vercel transport contract: extensionless slashless paths receive **308** to their slash form, including unknown paths, which then receive the branded **404**. The query string is preserved.
+
+## Deployment boundary
+
+This canary repository configuration targets the existing `a3stack-site-canary` Worker only. It does not attach a domain, create Cloudflare resources, or mutate production DNS. After account, zone, and cutover approval, add the exact custom-domain route through the reviewed Cloudflare workflow and deploy the already-verified commit. Do not run `wrangler deploy` against an unverified account.

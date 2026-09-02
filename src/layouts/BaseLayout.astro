@@ -1,0 +1,47 @@
+---
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
+import '@/styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+
+const defaultTitle = 'A3Stack — Identity × Payments × Data for AI Agents';
+const defaultDescription = 'Give your AI agent an identity, a wallet, and an API — in one SDK. A3Stack connects ERC-8004 identity, x402 payments, and MCP data into a unified agent infrastructure layer.';
+const { title = defaultTitle, description = defaultDescription, noindex = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="AI agents, ERC-8004, x402, MCP, agent identity, agent payments, arcabot" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta property="og:title" content="A3Stack — AI Agent Infrastructure SDK" />
+    <meta property="og:description" content="Identity × Payments × Data for AI agents." />
+    <meta property="og:url" content="https://a3stack.arcabot.ai" />
+    <meta property="og:site_name" content="A3Stack" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@arcabotai" />
+    <meta name="twitter:title" content="A3Stack — AI Agent Infrastructure SDK" />
+    <meta name="twitter:description" content="Identity × Payments × Data for AI agents." />
+    <script is:inline src="/scripts/site.js" defer></script>
+  </head>
+  <body class="grain">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Nav currentPath={Astro.url.pathname} />
+    <div class="site-shell">
+      <slot />
+      <Footer />
+    </div>
+  </body>
+</html>
